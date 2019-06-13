@@ -7,16 +7,40 @@
 //
 
 import UIKit
+import ExternalAccessory
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    /*Step By Step
+     
+     1.Make sure, iOS compatibility is enabled on the ev3 //How?
+     
+     2.Add the Ev3 Protocol to the 'info.plist'
+         add row (if 'Supported external accessory protocols' not exists)
+         choose 'Supported external accessory protocols'
+         Set value for Item # to 'COM.LEGO.MINDSTORMS.EV3'
+     
+     3.The 'Ev3Brick' just needs a 'Ev3Connection', which needs a 'EAAccessory'.
+     To optain a 'EAAccessory' you can access the 'EAAccessoryManager' and loop over all connected devices.
+     
+     */
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(accessoryConnected), name: .EAAccessoryDidConnect, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(accessoryDisconnected), name: EAAccessoryDidDisconnectNotification, object: nil)
+//        EAAccessoryManager.sharedAccessoryManager().registerForLocalNotifications()
+        
         return true
+    }
+    
+    @objc func accessoryConnected()
+    {
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
