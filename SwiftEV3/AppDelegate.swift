@@ -16,15 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /*Step By Step
      
-     1.Make sure, iOS compatibility is enabled on the ev3 //How?
+     1.先確定iOS相容EV3
      
-     2.Add the Ev3 Protocol to the 'info.plist'
-         add row (if 'Supported external accessory protocols' not exists)
-         choose 'Supported external accessory protocols'
-         Set value for Item # to 'COM.LEGO.MINDSTORMS.EV3'
+     2.Plist加入 'Supported external accessory protocols'：'COM.LEGO.MINDSTORMS.EV3'
      
-     3.The 'Ev3Brick' just needs a 'Ev3Connection', which needs a 'EAAccessory'.
-     To optain a 'EAAccessory' you can access the 'EAAccessoryManager' and loop over all connected devices.
+     3.import ExternalAccessory
+     
+     4.'Ev3Brick' < 'Ev3Connection' < 'EAAccessory'. (用EAAccessoryManager去掃)
      
      */
 
@@ -32,15 +30,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
         NotificationCenter.default.addObserver(self, selector: #selector(accessoryConnected), name: .EAAccessoryDidConnect, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(accessoryDisconnected), name: EAAccessoryDidDisconnectNotification, object: nil)
-//        EAAccessoryManager.sharedAccessoryManager().registerForLocalNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(accessoryDisconnected), name: .EAAccessoryDidDisconnect, object: nil)
+        EAAccessoryManager.shared().registerForLocalNotifications()
         
         return true
     }
     
-    @objc func accessoryConnected()
+    //被動
+    @objc func accessoryConnected(notif: Notification)
+    {
+        if let accessory = notif.userInfo?[EAAccessoryKey] as? EAAccessory
+        {
+            if Ev3Connection.supportsEv3Protocol(accessory: accessory)
+            {
+                connectEV3(accessory)
+            }
+        }
+    }
+    
+    @objc func accessoryDisconnected()
     {
         
+    }
+    
+    //主動
+    func findEV3Accessory()
+    {
+        let manager = EAAccessoryManager.shared()
+        let connecteds = manager.connectedAccessories
+        for accessory in connecteds
+        {
+            if Ev3Connection.supportsEv3Protocol(accessory: accessory)
+            {
+                connectEV3(accessory)
+            }
+        }
+    }
+    
+    fileprivate func connectEV3(_ accessory: EAAccessory)
+    {
+        let connection = Ev3Connection.init(accessory: accessory)
+        connection.open()
+        //        let brick = Ev3Brick.init(connection: connection)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
