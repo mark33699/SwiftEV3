@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    /*Step By Step
+    /*連接篇Step By Step
      
      1.先確定iOS相容EV3
      

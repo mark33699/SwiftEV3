@@ -8,10 +8,6 @@
 
 import Foundation
 
-public protocol Ev3BrickChangedDelegate {
-    func brickChanged()
-}
-
 public class Ev3Brick : Ev3ReportDelegate, Ev3ConnectionChangedDelegate {
     /// Interval for polling brick infos
     private let timeInterval: TimeInterval = 2.0

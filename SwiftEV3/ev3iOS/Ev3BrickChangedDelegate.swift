@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+public protocol Ev3BrickChangedDelegate {
+    func brickChanged()
+}
