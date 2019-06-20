@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
+    
+    let ev3ConncetManager = LMEV3ConnectManager.shared
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        let lmConncetManager = LMEV3ConnectManager.shared
+        ev3ConncetManager.findEV3Accessory()
         
         /* 命令篇
          
