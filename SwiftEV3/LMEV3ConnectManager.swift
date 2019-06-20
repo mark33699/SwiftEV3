@@ -24,7 +24,7 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
     }
     
     //被動
-    @objc func accessoryConnected(notif: Notification) //只有第一次才會call, 無法復現
+    @objc func accessoryConnected(notif: Notification) //只有第一次Alert才會call, 無法復現
     {
         print("已經連上休士頓了")
 //        if let accessory = notif.userInfo?[EAAccessoryKey] as? EAAccessory
@@ -46,41 +46,41 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
     {
         let manager = EAAccessoryManager.shared()
         
-        manager.showBluetoothAccessoryPicker(withNameFilter: nil)
-        { (error) in
-            
-            if error != nil
-            {
-                print("到底怎樣啦\(error.debugDescription)")
-            }
-            
-            if let accessory = manager.connectedAccessories.first
-            {
-                if Ev3Connection.supportsEv3Protocol(accessory: accessory)
-                {
-                    self.connectEV3(accessory)
-                }
-            }
-        }
+//        manager.showBluetoothAccessoryPicker(withNameFilter: nil)
+//        { (error) in
+//
+//            if error != nil
+//            {
+//                print("到底怎樣啦\(error.debugDescription)")
+//            }
         
-//        let connecteds = manager.connectedAccessories
-//        if connecteds.count > 0
-//        {
-//            for accessory in connecteds
+//            if let accessory = manager.connectedAccessories.first
 //            {
 //                if Ev3Connection.supportsEv3Protocol(accessory: accessory)
 //                {
-//                    connectEV3(accessory)
+//                    self.connectEV3(accessory)
 //                }
 //            }
 //        }
+        
+        let connecteds = manager.connectedAccessories
+        if connecteds.count > 0 //只要Picker曾經選過, 這邊就會有
+        {
+            for accessory in connecteds
+            {
+                if Ev3Connection.supportsEv3Protocol(accessory: accessory)
+                {
+                    connectEV3(accessory)
+                }
+            }
+        }
     }
     
     fileprivate func connectEV3(_ accessory: EAAccessory)
     {
         let connection = Ev3Connection.init(accessory: accessory)
         connection.open()
-        brick = Ev3Brick.init(connection: connection)
-        print("\(brick.debugDescription)")
+//        brick = Ev3Brick.init(connection: connection)
+//        print("\(brick.debugDescription)")
     }
 }
