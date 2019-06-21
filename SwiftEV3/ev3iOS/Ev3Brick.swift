@@ -32,7 +32,7 @@ public class Ev3Brick : Ev3ReportDelegate, Ev3ConnectionChangedDelegate {
     var ports: Dictionary<InputPort, Ev3Port>
     
     /// Buttons on the face of the LEGO EV3 brick
-    var buttons: BrickButtons
+    var buttons: Ev3BrickButtons
     
     /// Add delegates to get informed, if the brick has changed
     var brickChangedDelegates = [Ev3BrickChangedDelegate]()
@@ -49,7 +49,7 @@ public class Ev3Brick : Ev3ReportDelegate, Ev3ConnectionChangedDelegate {
     init(connection: Ev3Connection, alwaysSendEvents: Bool){
         self.connection = connection
         self.alwaysSendEvents = alwaysSendEvents
-        buttons = BrickButtons()
+        buttons = Ev3BrickButtons()
         ports = [InputPort: Ev3Port]()
         
         connection.addEv3ReportDelegate(self)

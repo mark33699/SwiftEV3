@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D3A8DCB22B168B7008E8E9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DCA22B168B7008E8E9B /* AppDelegate.swift */; };
-		0D3A8DCD22B168B7008E8E9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DCC22B168B7008E8E9B /* ViewController.swift */; };
+		0D3A8DCD22B168B7008E8E9B /* JoystickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DCC22B168B7008E8E9B /* JoystickViewController.swift */; };
 		0D3A8DD022B168B7008E8E9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A8DCE22B168B7008E8E9B /* Main.storyboard */; };
 		0D3A8DD222B168BA008E8E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A8DD122B168BA008E8E9B /* Assets.xcassets */; };
 		0D3A8DD522B168BA008E8E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A8DD322B168BA008E8E9B /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		0D3A8DF522B16905008E8E9B /* Ev3Port.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DE622B16905008E8E9B /* Ev3Port.swift */; };
 		0D3A8DF622B16905008E8E9B /* Ev3Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DE722B16905008E8E9B /* Ev3Constants.swift */; };
 		0D3A8DF722B16905008E8E9B /* Ev3ReportDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DE822B16905008E8E9B /* Ev3ReportDelegate.swift */; };
-		0D3A8DF822B16905008E8E9B /* BrickButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DE922B16905008E8E9B /* BrickButtons.swift */; };
+		0D3A8DF822B16905008E8E9B /* Ev3BrickButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DE922B16905008E8E9B /* Ev3BrickButtons.swift */; };
 		0D3A8DF922B16905008E8E9B /* Ev3Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DEA22B16905008E8E9B /* Ev3Connection.swift */; };
 		0D3A8DFA22B16905008E8E9B /* Ev3BrickChangedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A8DEB22B16905008E8E9B /* Ev3BrickChangedDelegate.swift */; };
 		8E19E66022B8EE14000D12E9 /* LMEV3ConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E19E65F22B8EE14000D12E9 /* LMEV3ConnectManager.swift */; };
@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		0D3A8DC722B168B7008E8E9B /* SwiftEV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftEV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D3A8DCA22B168B7008E8E9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D3A8DCC22B168B7008E8E9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D3A8DCC22B168B7008E8E9B /* JoystickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickViewController.swift; sourceTree = "<group>"; };
 		0D3A8DCF22B168B7008E8E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D3A8DD122B168BA008E8E9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D3A8DD422B168BA008E8E9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		0D3A8DE622B16905008E8E9B /* Ev3Port.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ev3Port.swift; sourceTree = "<group>"; };
 		0D3A8DE722B16905008E8E9B /* Ev3Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ev3Constants.swift; sourceTree = "<group>"; };
 		0D3A8DE822B16905008E8E9B /* Ev3ReportDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ev3ReportDelegate.swift; sourceTree = "<group>"; };
-		0D3A8DE922B16905008E8E9B /* BrickButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickButtons.swift; sourceTree = "<group>"; };
+		0D3A8DE922B16905008E8E9B /* Ev3BrickButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ev3BrickButtons.swift; sourceTree = "<group>"; };
 		0D3A8DEA22B16905008E8E9B /* Ev3Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ev3Connection.swift; sourceTree = "<group>"; };
 		0D3A8DEB22B16905008E8E9B /* Ev3BrickChangedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ev3BrickChangedDelegate.swift; sourceTree = "<group>"; };
 		8E19E65F22B8EE14000D12E9 /* LMEV3ConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMEV3ConnectManager.swift; sourceTree = "<group>"; };
@@ -88,12 +88,12 @@
 			children = (
 				0D3A8DDC22B168EB008E8E9B /* EV3iOS */,
 				0D3A8DCA22B168B7008E8E9B /* AppDelegate.swift */,
-				0D3A8DCC22B168B7008E8E9B /* ViewController.swift */,
-				0D3A8DCE22B168B7008E8E9B /* Main.storyboard */,
-				0D3A8DD122B168BA008E8E9B /* Assets.xcassets */,
-				0D3A8DD322B168BA008E8E9B /* LaunchScreen.storyboard */,
-				0D3A8DD622B168BA008E8E9B /* Info.plist */,
+				0D3A8DCC22B168B7008E8E9B /* JoystickViewController.swift */,
 				8E19E65F22B8EE14000D12E9 /* LMEV3ConnectManager.swift */,
+				0D3A8DCE22B168B7008E8E9B /* Main.storyboard */,
+				0D3A8DD322B168BA008E8E9B /* LaunchScreen.storyboard */,
+				0D3A8DD122B168BA008E8E9B /* Assets.xcassets */,
+				0D3A8DD622B168BA008E8E9B /* Info.plist */,
 			);
 			path = SwiftEV3;
 			sourceTree = "<group>";
@@ -101,8 +101,8 @@
 		0D3A8DDC22B168EB008E8E9B /* EV3iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0D3A8DE922B16905008E8E9B /* BrickButtons.swift */,
 				0D3A8DDD22B16904008E8E9B /* ByteTools.swift */,
+				0D3A8DE922B16905008E8E9B /* Ev3BrickButtons.swift */,
 				0D3A8DE022B16905008E8E9B /* Ev3Brick.swift */,
 				0D3A8DEB22B16905008E8E9B /* Ev3BrickChangedDelegate.swift */,
 				0D3A8DE222B16905008E8E9B /* Ev3Command.swift */,
@@ -196,11 +196,11 @@
 				0D3A8DEF22B16905008E8E9B /* Ev3Brick.swift in Sources */,
 				0D3A8DEC22B16905008E8E9B /* ByteTools.swift in Sources */,
 				0D3A8DED22B16905008E8E9B /* Ev3DirectCommand.swift in Sources */,
-				0D3A8DCD22B168B7008E8E9B /* ViewController.swift in Sources */,
+				0D3A8DCD22B168B7008E8E9B /* JoystickViewController.swift in Sources */,
 				0D3A8DF322B16905008E8E9B /* Ev3SimpleSounds.swift in Sources */,
 				0D3A8DFA22B16905008E8E9B /* Ev3BrickChangedDelegate.swift in Sources */,
 				8E19E66022B8EE14000D12E9 /* LMEV3ConnectManager.swift in Sources */,
-				0D3A8DF822B16905008E8E9B /* BrickButtons.swift in Sources */,
+				0D3A8DF822B16905008E8E9B /* Ev3BrickButtons.swift in Sources */,
 				0D3A8DF522B16905008E8E9B /* Ev3Port.swift in Sources */,
 				0D3A8DF222B16905008E8E9B /* Ev3SystemCommand.swift in Sources */,
 				0D3A8DF422B16905008E8E9B /* Ev3Response.swift in Sources */,
@@ -355,14 +355,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYWS2XXTMP;
+				DEVELOPMENT_TEAM = WD6896SZNC;
 				INFOPLIST_FILE = SwiftEV3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mark.deveolper.SwiftEV3;
+				PRODUCT_BUNDLE_IDENTIFIER = mark.deveolper.SwiftEV3.ohmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,14 +374,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FYWS2XXTMP;
+				DEVELOPMENT_TEAM = WD6896SZNC;
 				INFOPLIST_FILE = SwiftEV3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mark.deveolper.SwiftEV3;
+				PRODUCT_BUNDLE_IDENTIFIER = mark.deveolper.SwiftEV3.ohmy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

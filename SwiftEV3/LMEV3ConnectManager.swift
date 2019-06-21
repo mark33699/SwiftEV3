@@ -44,7 +44,11 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
     
     @objc func accessoryDisconnected()
     {
-        
+        /* https://stackoverflow.com/questions/16227594/disconnect-external-accessory-without-physically-disconnecting
+         
+         The only way I see for a soft disconnect is to close the EASession's inputStream and outputStream.
+         
+         */
     }
     
     //主動

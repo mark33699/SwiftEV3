@@ -1,5 +1,5 @@
 //
-//  BrickButtons.swift
+//  Ev3BrickButtons.swift
 //  EV3BTSpike
 //
 //  Created by Andre on 03.05.16.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Buttons on the face of the LEGO EV3 brick
-public class BrickButtons {
+public class Ev3BrickButtons {
     
     /// Up button
     public var up: Bool = false
