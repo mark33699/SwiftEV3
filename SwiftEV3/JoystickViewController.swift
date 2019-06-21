@@ -46,35 +46,56 @@ class JoystickViewController: UIViewController
         }
         
         /*
-         motionManager = [CMMotionManager new];
-         motionManager.accelerometerUpdateInterval = 0.01;
-         [motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMAccelerometerData * _Nullable accelerometerData, NSError * _Nullable error)
-         {
-         if (currentBoboAction != BoboActionTypeGosh)
-         {
-         NSInteger intLandScape = UIDevice.currentDevice.orientation == UIDeviceOrientationLandscapeRight ? -1 : 1;
-         //             CCLOG(@"方向為%d",intLandScape);
+         官方功能
          
-         CMAcceleration acceleration = accelerometerData.acceleration;
-         currentBoboAction = acceleration.y > 0 ? BoboActionTypeLeft : BoboActionTypeRight;
+         TypeA.
          
-         CGFloat newX = boboWalking.position.x + (acceleration.y * -offsetBobo * intLandScape);
-         newX = MIN(MAX(newX, minX),maxX);
-         [self performSelectorOnMainThread:@selector(updateBobo:) withObject:@(newX) waitUntilDone:NO];
+            搖桿(ABCD防呆不可能重複)
+                左馬達
+                    ABCD選一
+                    左右方向選一
+                右馬達
+                    ABCD選一
+                    左右方向選一
          
-         CGFloat thisMoveBg1 = (acceleration.y * offsetBg1 * intLandScape);
-         if (fabs(totleMoveBg1) < canMoveDistanceBg1){
-         totleMoveBg1 += thisMoveBg1;
-         CGFloat newXbg1 = bg1.position.x + thisMoveBg1;
-         [self performSelectorOnMainThread:@selector(updateBg1:) withObject:@(newXbg1) waitUntilDone:NO];
-         }
-         else if (totleMoveBg1 > 0 && thisMoveBg1 < 0){
-         totleMoveBg1 += thisMoveBg1;
-         }
-         else if (totleMoveBg1 < 0 && thisMoveBg1 > 0){
-         totleMoveBg1 += thisMoveBg1;
-         }
-         }];
+         二維TILT(ABCD防呆不可能重複)
+         左馬達
+         ABCD選一
+         左右方向選一
+         右馬達
+         ABCD選一
+         左右方向選一
+         
+         TypeB.
+            水平滑桿
+                ABCD選一
+                左右方向選一
+            垂直滑桿
+                ABCD選一
+                左右方向選一
+         左右TILT(傾斜)
+         ABCD選一
+         左右方向選一
+         前後TILT
+         ABCD選一
+         左右方向選一
+         開關
+         ABCD選一
+         左右方向選一
+         
+         TypeC.
+         按鈕
+         ABCD選一
+         左右方向選一
+         秒數(0.2~5秒)
+         
+         TypeD.
+            接觸感應器
+                ABCD選一
+            IR(紅外線)感應器
+                ABCD選一
+            顏色感應器
+                ABCD選一
          
          */
         
