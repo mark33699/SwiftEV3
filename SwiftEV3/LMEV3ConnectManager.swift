@@ -15,6 +15,15 @@
 import Foundation
 import ExternalAccessory
 
+//extension NSNotification.Name
+//{
+//    static let LMEV3ConnectSuccess: NSNotification.Name
+//    static let LMEV3ConnectFail: NSNotification.Name
+//}
+
+let LMEV3ConnectSuccess = NSNotification.Name(rawValue: "LMEV3ConnectSuccess")
+let LMEV3ConnectFail = NSNotification.Name(rawValue: "LMEV3ConnectFail")
+
 class LMEV3ConnectManager //LM = LEGO mindstorms
 {
     static let shared = LMEV3ConnectManager.init()
@@ -83,6 +92,10 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
                         self.connectEV3(accessory)
                     }
                 }
+                else
+                {
+                    NotificationCenter.default.post(name: .EAAccessoryDidConnect, object: nil)
+                }
             }
         }
     }
@@ -93,5 +106,6 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
         connection.open()
         brick = Ev3Brick.init(connection: connection) //經測試, 好像原因是不生brick就有一定機率閃退
         print("\(brick.debugDescription)")
+        NotificationCenter.default.post(name: LMEV3ConnectSuccess, object: nil)
     }
 }

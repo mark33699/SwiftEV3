@@ -14,36 +14,74 @@ class JoystickViewController: UIViewController
     let ev3ConncetManager = LMEV3ConnectManager.shared
     let motionManager = CMMotionManager.init()
     
+    //為什麼可以這樣寫????
+    let defaultPorts: OutputPort = [.B, .C]
+    let rightPort: OutputPort = .C
+    let leftPort: OutputPort = .B
+    
+    var directionValue: Double = 0.0
+    var isTurnRight: Bool = true
+    
     @IBOutlet weak var labHint: UILabel!
+    @IBOutlet var switchPower: UISwitch!
+    @IBOutlet var sliderSpeed: UISlider!
+    
+    @objc func eV3ConnectSuccess()
+    {
+        switchPower.isEnabled = true
+    }
+    
+    func sendTurnCommand()
+    {
+        if switchPower.isOn
+        {
+            let command = Ev3Command(commandType: .directNoReply)
+    
+            let slowSpeed = Int16( sliderSpeed!.value * (1 - Float(directionValue)))
+            command.turnMotorAtPower(ports: isTurnRight ? leftPort : rightPort, power: slowSpeed)
+            let fastSpeed = Int16(sliderSpeed!.value)
+            command.turnMotorAtPower(ports: isTurnRight ? rightPort : leftPort, power: fastSpeed)
+
+//            if isTurnRight
+//            {
+//                let speed = Int16( sliderSpeed!.value * (1 - Float(directionValue)))
+//                command.turnMotorAtPower(ports: .B, power: speed)
+//                let speed2 = Int16(sliderSpeed!.value)
+//                command.turnMotorAtPower(ports: .C, power: speed2)//不動
+//                print(speed)
+//            }
+//            else
+//            {
+//                let speed = Int16(sliderSpeed!.value * (1 - Float(directionValue)))
+//                command.turnMotorAtPower(ports: .C, power: speed)
+//                let speed2 = Int16(sliderSpeed!.value)
+//                command.turnMotorAtPower(ports: .B, power: speed2)//不動
+//                print(speed)
+//            }
+            
+            command.startMotor(ports: defaultPorts)
+            ev3ConncetManager.brick?.sendCommand(command)
+        }
+    }
+    
+    @objc func powerDidChange()
+    {
+        if switchPower.isOn == false
+        {
+            ev3ConncetManager.brick?.directCommand.stopMotor(onPorts: defaultPorts, withBrake: true)
+        }
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(eV3ConnectSuccess), name: LMEV3ConnectSuccess, object: nil)
         ev3ConncetManager.findEV3Accessory()
         
-        motionManager.accelerometerUpdateInterval = 0.25
-        motionManager.startAccelerometerUpdates(to: OperationQueue.init())
-        { (accelerometerData, error) in
-            
-            let isLandScapeRight = UIDevice.current.orientation == .landscapeRight
-            if let acceleration = accelerometerData?.acceleration
-            {
-                var strDirection = ""
-                if isLandScapeRight
-                {
-                    strDirection = acceleration.y > 0 ? "往右" : "往左"
-                }
-                else
-                {
-                    strDirection = acceleration.y > 0 ? "往左" : "往右"
-                }
-                let ceilY = ceil(acceleration.y * 1000) / 1000
-                DispatchQueue.main.async
-                {
-                    self.labHint.text = strDirection + "\(fabs(ceilY))"
-                }
-            }
-        }
+        startAccelerometer()
+        switchPower.addTarget(self, action: #selector(powerDidChange), for: .valueChanged)
+//        sliderSpeed.transform = CGAffineTransform.init(rotationAngle: .pi * 0.5) //這樣操作一次就壞掉
         
         /*
          官方功能
@@ -91,13 +129,15 @@ class JoystickViewController: UIViewController
          
          TypeD.
             接觸感應器
-                ABCD選一
+                1234選一
             IR(紅外線)感應器
-                ABCD選一
+                1234選一
             顏色感應器
-                ABCD選一
+                1234選一
          
          */
+        
+        //機器上左B右C, 右方為前方
         
         /* 命令篇
          
@@ -123,7 +163,35 @@ class JoystickViewController: UIViewController
          */
         
     }
-
-
+    
+    func startAccelerometer()
+    {
+        motionManager.accelerometerUpdateInterval = 0.25
+        motionManager.startAccelerometerUpdates(to: OperationQueue.init())
+        { (accelerometerData, error) in
+            
+            let isLandScapeRight = UIDevice.current.orientation == .landscapeRight
+            if let acceleration = accelerometerData?.acceleration
+            {
+                var strDirection = ""
+                if isLandScapeRight
+                {
+                    strDirection = acceleration.y > 0 ? "往右" : "往左"
+                    self.isTurnRight = acceleration.y > 0
+                }
+                else
+                {
+                    strDirection = acceleration.y > 0 ? "往左" : "往右"
+                    self.isTurnRight = acceleration.y < 0
+                }
+                let ceilY = ceil(acceleration.y * 1000) / 1000
+                self.directionValue = fabs(ceilY)
+                DispatchQueue.main.async
+                {
+                    self.labHint.text = strDirection + "\(self.directionValue)"
+                    self.sendTurnCommand()
+                }
+            }
+        }
+    }
 }
-

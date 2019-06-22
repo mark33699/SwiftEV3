@@ -18,22 +18,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZA-v9-ZNi">
-                                <rect key="frame" x="427" y="196.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Owq-fZ-XY3">
+                                <rect key="frame" x="44" y="191.5" width="808" height="31"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-4J-TKm">
+                                        <rect key="frame" x="0.0" y="0.0" width="271.5" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZA-v9-ZNi">
+                                        <rect key="frame" x="269.5" y="0.0" width="269" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="mwp-0q-enq">
+                                        <rect key="frame" x="536.5" y="0.0" width="273.5" height="32"/>
+                                    </slider>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EZA-v9-ZNi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ypl-Et-zt1"/>
-                            <constraint firstItem="EZA-v9-ZNi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="o6l-Z3-HFK"/>
+                            <constraint firstItem="Owq-fZ-XY3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="N1I-fr-o4w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Owq-fZ-XY3" secondAttribute="trailing" id="YSK-JF-0Y3"/>
+                            <constraint firstItem="Owq-fZ-XY3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ftq-gO-m5c"/>
+                            <constraint firstItem="Owq-fZ-XY3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ncj-Tc-O1L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="labHint" destination="EZA-v9-ZNi" id="6Cw-Ym-1E3"/>
+                        <outlet property="sliderSpeed" destination="mwp-0q-enq" id="gQg-7t-GOh"/>
+                        <outlet property="switchPower" destination="sM0-4J-TKm" id="SEd-AI-rIr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
