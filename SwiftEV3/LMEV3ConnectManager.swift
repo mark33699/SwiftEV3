@@ -15,6 +15,7 @@ let LMEV3ConnectFail = NSNotification.Name(rawValue: "LMEV3ConnectFail")
 class LMEV3ConnectManager //LM = LEGO mindstorms
 {
     static let shared = LMEV3ConnectManager.init()
+    let eaManager = EAAccessoryManager.shared()
     var brick: Ev3Brick?
     
     init()
@@ -38,8 +39,7 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
     //主動
     func findEV3Accessory()
     {
-        let manager = EAAccessoryManager.shared()
-        let connecteds = manager.connectedAccessories
+        let connecteds = eaManager.connectedAccessories
         if connecteds.count > 0 //只要Picker曾經選過, 這邊就會有
         {
             for accessory in connecteds
@@ -52,15 +52,15 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
         }
         else
         {
-            manager.showBluetoothAccessoryPicker(withNameFilter: nil)
+            eaManager.showBluetoothAccessoryPicker(withNameFilter: nil)
             { (error) in
-    
+
                 if error != nil
                 {
                     print("選擇EV3時錯誤：\(error.debugDescription)")
                 }
-    
-                if let accessory = manager.connectedAccessories.first
+
+                if let accessory = self.eaManager.connectedAccessories.first
                 {
                     if Ev3Connection.supportsEv3Protocol(accessory: accessory)
                     {

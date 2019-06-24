@@ -11,7 +11,7 @@ import CoreMotion
 
 class JoystickViewController: UIViewController
 {
-    let ev3ConncetManager = LMEV3ConnectManager.shared
+    let lmManager = LMEV3ConnectManager.shared
     let motionManager = CMMotionManager.init()
     
     let rightPort: OutputPort = .C
@@ -31,7 +31,10 @@ class JoystickViewController: UIViewController
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(eV3ConnectSuccess), name: LMEV3ConnectSuccess, object: nil)
-        ev3ConncetManager.findEV3Accessory()
+        lmManager.findEV3Accessory()
+//        lmManager.eaManager.showBluetoothAccessoryPicker(withNameFilter: nil) { (e) in
+//
+//        }
         
         startAccelerometer()
         switchPower.addTarget(self, action: #selector(powerDidChange), for: .valueChanged)
@@ -85,7 +88,7 @@ class JoystickViewController: UIViewController
             command.turnMotorAtPower(ports: isTurnRight ? leftPort : rightPort,
                                      power: switchGoForward.isOn ? fastSpeed : -fastSpeed)
             command.startMotor(ports: defaultPorts)
-            ev3ConncetManager.brick?.sendCommand(command)
+            lmManager.brick?.sendCommand(command)
         }
     }
     
@@ -93,7 +96,7 @@ class JoystickViewController: UIViewController
     {
         if switchPower.isOn == false
         {
-            ev3ConncetManager.brick?.directCommand.stopMotor(onPorts: defaultPorts, withBrake: true)
+            lmManager.brick?.directCommand.stopMotor(onPorts: defaultPorts, withBrake: true)
         }
     }
     

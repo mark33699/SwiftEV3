@@ -256,7 +256,7 @@ public class Ev3Connection : NSObject, StreamDelegate {
             break
             
         case Stream.Event.openCompleted:
-            print("stream opened")
+            print("\(aStream) stream opened")
             break
             
         case Stream.Event.errorOccurred:
