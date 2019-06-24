@@ -27,16 +27,12 @@ class LMEV3ConnectManager //LM = LEGO mindstorms
     //被動
     @objc func accessoryConnected(notif: Notification) //只有第一次Alert才會call, 無法復現 (好像EV3重開就會了)
     {
-        print("已經連上休士頓了")
+
     }
     
     @objc func accessoryDisconnected()
     {
-        /* https://stackoverflow.com/questions/16227594/disconnect-external-accessory-without-physically-disconnecting
-         
-         The only way I see for a soft disconnect is to close the EASession's inputStream and outputStream.
-         
-         */
+
     }
     
     //主動

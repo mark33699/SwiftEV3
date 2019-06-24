@@ -12,18 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    /*連接篇Step By Step
-     
-     1.先確定iOS相容EV3
-     
-     2.Plist加入 'Supported external accessory protocols'：'COM.LEGO.MINDSTORMS.EV3'
-     
-     3.import ExternalAccessory
-     
-     4.'Ev3Brick' < 'Ev3Connection' < 'EAAccessory'. (用EAAccessoryManager去掃)
-     
-     */
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool

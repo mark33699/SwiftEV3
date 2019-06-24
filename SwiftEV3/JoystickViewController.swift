@@ -16,8 +16,7 @@ class JoystickViewController: UIViewController
     
     let rightPort: OutputPort = .C
     let leftPort: OutputPort = .B
-    //為什麼可以這樣寫????型別根本不是陣列啊
-    let defaultPorts: OutputPort = [.B, .C]
+    let defaultPorts: OutputPort = [.B, .C] //WHY?
     
     var directionValue: Double = 0.0
     var isTurnRight: Bool = true
@@ -36,7 +35,6 @@ class JoystickViewController: UIViewController
         
         startAccelerometer()
         switchPower.addTarget(self, action: #selector(powerDidChange), for: .valueChanged)
-//        sliderSpeed.transform = CGAffineTransform.init(rotationAngle: .pi * 0.5) //這樣操作一次就壞掉
     }
     
     @objc func eV3ConnectSuccess()
