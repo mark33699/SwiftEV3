@@ -32,12 +32,17 @@ class JoystickViewController: UIViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(eV3ConnectSuccess), name: LMEV3ConnectSuccess, object: nil)
         lmManager.findEV3Accessory()
-//        lmManager.eaManager.showBluetoothAccessoryPicker(withNameFilter: nil) { (e) in
-//
-//        }
         
         startAccelerometer()
         switchPower.addTarget(self, action: #selector(powerDidChange), for: .valueChanged)
+    }
+    
+    @IBAction func btnBLE(_ sender: Any)
+    {
+        lmManager.eaManager.showBluetoothAccessoryPicker(withNameFilter: nil)
+        { (e) in
+        
+        }
     }
     
     @objc func eV3ConnectSuccess()
